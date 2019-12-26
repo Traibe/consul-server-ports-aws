@@ -22,7 +22,7 @@ resource "aws_security_group_rule" "server_rpc_tcp" {
   protocol          = "tcp"
   from_port         = 8300
   to_port           = 8300
-  cidr_blocks       = [var.cidr_blocks]
+  cidr_blocks       = var.cidr_blocks
 }
 
 
@@ -41,7 +41,7 @@ resource "aws_security_group_rule" "serf_wan_tcp" {
   protocol          = "tcp"
   from_port         = 8302
   to_port           = 8302
-  cidr_blocks       = [var.cidr_blocks]
+  cidr_blocks       = var.cidr_blocks
 }
 
 # Serf WAN (Default 8302) - UDP. This is used by servers to gossip over the WAN to other servers on TCP and UDP.
@@ -53,5 +53,5 @@ resource "aws_security_group_rule" "serf_wan_udp" {
   protocol          = "udp"
   from_port         = 8302
   to_port           = 8302
-  cidr_blocks       = [var.cidr_blocks]
+  cidr_blocks       = var.cidr_blocks
 }
